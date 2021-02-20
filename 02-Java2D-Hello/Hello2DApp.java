@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.awt.geom.*;
 
 public class Hello2DApp {
     public static void main (String[] args) {
@@ -20,15 +21,21 @@ class Hello2DFrame extends JFrame {
         );
         this.setTitle("Java2D - Hello World!");
         this.setSize(350, 350);
+        
     }
 
     public void paint (Graphics g) {
         super.paint(g);
+        
         Graphics2D g2d = (Graphics2D) g;
         g2d.setPaint(Color.red);
         int w = getWidth();
         int h = getHeight();
         g2d.drawLine(0,125, w,125);
         g2d.drawLine(125,0, 125,h);
+        g2d.draw(new Rectangle2D.Double(125, 125,
+                               223,
+                               125));
+        g2d.setColor(Color.blue);                    
     }
 }
