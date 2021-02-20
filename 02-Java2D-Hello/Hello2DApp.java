@@ -33,9 +33,11 @@ class Hello2DFrame extends JFrame {
         int h = getHeight();
         g2d.drawLine(0,125, w,125);
         g2d.drawLine(125,0, 125,h);
-        g2d.draw(new Rectangle2D.Double(125, 125,
+        GradientPaint redblue = new GradientPaint(0,80,Color.RED,100, 0,Color.BLUE);
+		g2d.setPaint(redblue);
+        g2d.fill(new Rectangle2D.Double(125, 125,
                                223,
                                125));
-        g2d.setColor(Color.blue);                    
+                          
     }
 }
