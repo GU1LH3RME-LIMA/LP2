@@ -59,7 +59,7 @@ class Rect {
         g2d.setColor(this.cc);
         g2d.drawRect(this.x,this.y, this.w,this.h);
         g2d.setColor(this.cf);
-        g2d.fillRect(this.x+1,this.y+1, this.w+1,this.h+1);
+        g2d.fillRect(this.x+1,this.y+1, this.w-1,this.h-1);
 
     }
 }
