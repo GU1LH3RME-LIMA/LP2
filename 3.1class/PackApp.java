@@ -14,7 +14,7 @@ class PackApp {
 class PackFrame extends JFrame {
     Rect r1;
     Ellipse e1,e2;
-
+    Word p;
     PackFrame () {
         this.addWindowListener (
             new WindowAdapter() {
@@ -28,6 +28,7 @@ class PackFrame extends JFrame {
         this.r1 = new Rect(50,50, 100,30,Color.RED,Color.BLACK);
         this.e1 = new Ellipse(30,70, 30,30,Color.BLACK,Color.BLUE);
         this.e2 = new Ellipse(140,70, 30,30,Color.BLACK,Color.BLUE);
+        this.p = new Word(53,70,"Marquinhos Jr.");
     }
 
     public void paint (Graphics g) {
@@ -35,5 +36,6 @@ class PackFrame extends JFrame {
         this.r1.paint(g);
         this.e1.paint(g);
         this.e2.paint(g);
+        this.p.paint(g);
     }
 }
