@@ -5,8 +5,8 @@ import java.awt.*;
 public class Word extends Figure{
     
     String word;
-    public Word(int x,int y, String word,Color cc){
-        super(x, y, cc);
+    public Word(int x,int y,int w, String word,Color cc){
+        super(x, y,w, cc);
         this.word=word;
     }
         public void print (){
@@ -15,6 +15,7 @@ public class Word extends Figure{
         }
         public void paint(Graphics g){
             Graphics2D g2d = (Graphics2D) g;
+            g2d.setFont(new Font("Segoe Script", Font.BOLD , this.w));
             g2d.setColor(this.cc);
             g2d.drawString(this.word, this.x, this.y);
         }

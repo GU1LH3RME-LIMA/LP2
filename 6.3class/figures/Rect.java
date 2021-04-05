@@ -1,12 +1,11 @@
 package figures;
 import java.awt.*;
 public class Rect extends Figure {
-    int w, h;
+    int h;
     Color cf;
 
     public Rect (int x, int y, int w, int h,Color cc,Color cf) {
-        super(x, y, cc);
-        this.w = w;
+        super(x, y,w, cc);
         this.h = h;
         this.cf=cf;
     }

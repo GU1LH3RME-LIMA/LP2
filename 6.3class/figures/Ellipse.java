@@ -4,11 +4,10 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Ellipse2D.Double;
 
 public class Ellipse extends Figure {
-    int w, h;
+    int  h;
     Color cf;
     public Ellipse (int x, int y, int w, int h,Color cc, Color cf) {
-        super(x, y, cc);
-        this.w = w;
+        super(x, y, w, cc);
         this.h = h;
         this.cf = cf;
     }

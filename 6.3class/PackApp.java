@@ -37,7 +37,7 @@ class PackFrame extends JFrame {
                         new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255))));
                     }
                     else if(evt.getKeyChar() == 'l'){
-                        figs.add(new Word(rand.nextInt(350),rand.nextInt(350),rand.toString(),new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255))));
+                        figs.add(new Word(rand.nextInt(350),rand.nextInt(350),rand.nextInt(30),rand.toString(),new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255))));
                     }
                     repaint();
 
