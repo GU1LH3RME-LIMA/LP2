@@ -12,17 +12,51 @@ public class Line extends Figure{
         this.x2=x2;
         this.line= new Line2D.Double(this.x,this.y,this.x2,this.h);
     }
+
     @Override
     public void print () {
         System.out.format("Retangulo de tamanho (%d,%d) na posicao (%d,%d).\n",
             this.w, this.h, this.x, this.y);
     }
+
+    @Override
+    public void changeColor(Color cc) {
+    }
+
+    @Override
+    public void changeBorder(Color cc){
+        this.cc=cc;
+    }
+
     @Override
 	public boolean contains(MouseEvent evt) {
-			if (this.line.contains(evt.getPoint()))
+			if (this.line.ptSegDist(evt.getPoint()) <= 5)
 				return true;
 			return false;
 	}
+
+    @Override
+    public void drag (int x, int y, Point mouse_pos) {
+        if (Math.sqrt(Math.pow(this.x - mouse_pos.x, 2) + Math.pow(this.y - mouse_pos.y, 2)) <= 5) {
+            this.x += x;
+            this.y += y;
+        } else if (Math.sqrt(Math.pow(this.x2 - mouse_pos.x, 2) + Math.pow(this.h - mouse_pos.y, 2)) <= 5) {
+            this.x2 += x;
+            this.h += y;
+        } else {
+            this.x += x;
+            this.y += y;
+
+            this.x += x;
+            this.y += y;
+
+            this.x2 += x;
+            this.h += y;
+        }
+
+        this.line = new Line2D.Double(this.x, this.y, this.x2, this.h);
+    }
+    
     @Override
     public void paint(Graphics g){
         Graphics2D g2d = (Graphics2D) g;

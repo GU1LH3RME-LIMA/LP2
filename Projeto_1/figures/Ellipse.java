@@ -17,6 +17,20 @@ public class Ellipse extends Figure {
             this.w, this.h, this.x, this.y);
     }
     @Override
+    public void changeColor(Color cf) {
+        this.cf=cf;
+    }
+    @Override
+    public void drag(int x,int y, Point pos){
+        this.x+=x;
+        this.y+=y;
+        this.ellipse = new Ellipse2D.Double(this.x+1,this.y+1, this.w-1,this.h-1);
+    }
+    @Override
+    public void changeBorder(Color cc){
+        this.cc=cc;
+    }
+    @Override
 	public boolean contains(MouseEvent evt) {
 			if (this.ellipse.contains(evt.getPoint()))
 				return true;
