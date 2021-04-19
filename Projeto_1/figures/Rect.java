@@ -26,11 +26,6 @@ public class Rect extends Figure {
         this.rect = new Rectangle(this.x+1,this.y+1, this.w-1,this.h-1);
     }
     @Override
-    public void changeBorder(Color cc){
-        this.cc=cc;
-        this.rect = new Rectangle(this.x+1,this.y+1, this.w-1,this.h-1);
-    }
-    @Override
 	public boolean contains(MouseEvent evt) {
 			if (this.rect.contains(evt.getPoint()))
 				return true;

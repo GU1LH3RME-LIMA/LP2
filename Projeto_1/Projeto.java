@@ -2,19 +2,16 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Random;
 import figures.*;
 public class Projeto{
     public static void main(String[] args) {
         PackFrame frame=new PackFrame();
         frame.setVisible(true);
     }
-    
-}
+    }
 class PackFrame extends JFrame {
     ArrayList<Figure> figs = new ArrayList<Figure>();
     Point pos;
-    Random rand = new Random();
     Figure focus = null;
     Color a = null;
     PackFrame () {
@@ -53,9 +50,7 @@ class PackFrame extends JFrame {
                         figs.remove(focus);
                         figs.add(focus);
                     }
-                    
-
-                    repaint();
+                repaint();
                 }
             }
             );
@@ -93,7 +88,6 @@ class PackFrame extends JFrame {
                     else if(evt.getKeyChar() == 'l'){
                         figs.add(new Line(mouse.x, mouse.y,
                         60, 60 , 3,  Color.BLACK));
-                         
                     }
                     //change the color
                     else if(evt.getKeyChar() == '1' && (focus!=null)){
@@ -111,35 +105,36 @@ class PackFrame extends JFrame {
                     else if(evt.getKeyChar() == '5' && (focus!=null) ){
                         focus.changeColor(Color.WHITE);
                         }
-                    
-                    //change the border
-                    else if(evt.getKeyChar() == '6' && focus!=null){
-                        focus.changeBorder(Color.RED);
-                    }
-                    else if(evt.getKeyChar() == '7' &&  focus!=null){
-                        focus.changeBorder(Color.GREEN);
-                    }
-                    else if(evt.getKeyChar() == '8' && focus!=null){
-                       focus.changeBorder(Color.BLUE);
-                    }
-                    else if(evt.getKeyChar() == '9' && focus!=null){
-                        focus.changeBorder(Color.BLACK);
-                    }
-                    else if(evt.getKeyChar() == '0' && focus!=null){
-                        focus.changeBorder(Color.WHITE);
-                        }
                     else if(evt.getKeyCode() == KeyEvent.VK_DELETE && focus!=null){
                             figs.remove(focus);
                             focus=null;
                     }
+                    //change the border
+                   else if(evt.getKeyChar() == '6' && focus!=null){
+                        focus.cc=Color.RED;
+                        a=focus.cc;
+                    }
+                    else if(evt.getKeyChar() == '7' &&  focus!=null){
+                        focus.cc=Color.GREEN;
+                        a=focus.cc;
+                    }
+                    else if(evt.getKeyChar() == '8' && focus!=null){
+                       focus.cc=Color.BLUE;
+                       a=focus.cc;
+                    }
+                    else if(evt.getKeyChar() == '9' && focus!=null){
+                        focus.cc=Color.BLACK;
+                        a=focus.cc;
+                    }
+                    else if(evt.getKeyChar() == '0' && focus!=null){
+                        focus.cc=Color.WHITE;
+                        a=focus.cc;
+                    }
+                   
                     repaint();
-                    
-
                 }
             }
         );
-    
-
         this.setTitle("Mini Editor");
         this.setSize(350, 350);
     }

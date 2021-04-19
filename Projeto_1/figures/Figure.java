@@ -16,7 +16,6 @@ public abstract class Figure {
     public abstract boolean contains(MouseEvent evt);
     public abstract void changeColor(Color cf);
     public abstract void drag (int dx, int dy,Point pos);   
-    public abstract void changeBorder(Color cc);
     public abstract void print();
     public abstract void paint (Graphics g);
 }

@@ -18,10 +18,6 @@ public class Triang extends Figure{
    
 	}
 	@Override
-	public void changeBorder(Color cc){
-        this.cc=cc;
-    }
-	@Override
     public void changeColor(Color cf) {
         this.cf=cf;
     }

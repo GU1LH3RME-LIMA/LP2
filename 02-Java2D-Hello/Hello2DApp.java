@@ -38,6 +38,7 @@ class Hello2DFrame extends JFrame {
         g2d.fill(new Rectangle2D.Double(125, 125,
                                223,
                                125));
+        
                           
     }
 }

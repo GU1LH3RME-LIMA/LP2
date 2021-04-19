@@ -22,12 +22,6 @@ public class Line extends Figure{
     @Override
     public void changeColor(Color cc) {
     }
-
-    @Override
-    public void changeBorder(Color cc){
-        this.cc=cc;
-    }
-
     @Override
 	public boolean contains(MouseEvent evt) {
 			if (this.line.ptSegDist(evt.getPoint()) <= 5)
