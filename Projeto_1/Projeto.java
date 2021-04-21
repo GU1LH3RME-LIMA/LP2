@@ -23,7 +23,8 @@ class PackFrame extends JFrame {
             }
         );
        
-            this.addMouseListener (
+        this.addMouseListener (
+            //gives a focus on figure
             new MouseAdapter() {
                 public void mousePressed (MouseEvent evt) {
                     pos = getMousePosition();
@@ -56,6 +57,7 @@ class PackFrame extends JFrame {
             );
 
             this.addMouseMotionListener (
+                // action that move the figure
                 new MouseMotionAdapter() {
                     public void mouseDragged (MouseEvent evt) {
                         if (focus != null) {
@@ -90,47 +92,56 @@ class PackFrame extends JFrame {
                         60, 60 , 3,  Color.BLACK));
                     }
                     //change the color
-                    else if(evt.getKeyChar() == '1' && (focus!=null)){
-                        focus.changeColor(Color.RED);
+                    else if(focus!=null){
+                        if(evt.getKeyChar() == '1' ){
+                            focus.changeColor(Color.RED);
                         }
-                    else if(evt.getKeyChar() == '2' && (focus!=null) ){
-                        focus.changeColor(Color.GREEN);
-                    }
-                    else if(evt.getKeyChar() == '3' && (focus!=null) ){
-                        focus.changeColor(Color.BLUE);
-                    }
-                    else if(evt.getKeyChar() == '4' && (focus!=null) ){
-                        focus.changeColor(Color.BLACK);
-                    }
-                    else if(evt.getKeyChar() == '5' && (focus!=null) ){
-                        focus.changeColor(Color.WHITE);
+                        else if(evt.getKeyChar() == '2' ){
+                            focus.changeColor(Color.GREEN);
                         }
-                    else if(evt.getKeyCode() == KeyEvent.VK_DELETE && focus!=null){
+                        else if(evt.getKeyChar() == '3' ){
+                            focus.changeColor(Color.BLUE);
+                        }
+                        else if(evt.getKeyChar() == '4'){
+                            focus.changeColor(Color.BLACK);
+                        }
+                        else if(evt.getKeyChar() == '5'){
+                            focus.changeColor(Color.WHITE);
+                        }
+                        else if(evt.getKeyCode() == KeyEvent.VK_DELETE){
                             figs.remove(focus);
                             focus=null;
-                    }
+                         }
                     //change the border
-                   else if(evt.getKeyChar() == '6' && focus!=null){
-                        focus.cc=Color.RED;
-                        a=focus.cc;
+                        else if(evt.getKeyChar() == '6'){
+                            focus.cc=Color.RED;
+                            a=focus.cc;
+                        }
+                        else if(evt.getKeyChar() == '7'){
+                            focus.cc=Color.GREEN;
+                            a=focus.cc;
+                        }
+                        else if(evt.getKeyChar() == '8'){
+                            focus.cc=Color.BLUE;
+                            a=focus.cc;
+                        }
+                        else if(evt.getKeyChar() == '9'){
+                            focus.cc=Color.BLACK;
+                            a=focus.cc;
+                        }
+                        else if(evt.getKeyChar() == '0'){
+                            focus.cc=Color.WHITE;
+                            a=focus.cc;
+                        }
+                        else if(evt.getKeyCode() ==KeyEvent.VK_UP) 
+                            focus.resize(1,0);
+                        else if(evt.getKeyCode() ==KeyEvent.VK_DOWN) 
+                            focus.resize(-1,0);
+                        else if(evt.getKeyCode() ==KeyEvent.VK_RIGHT) 
+                            focus.resize(0,1);
+                        else if(evt.getKeyCode() ==KeyEvent.VK_LEFT)
+                            focus.resize(0,-1);  
                     }
-                    else if(evt.getKeyChar() == '7' &&  focus!=null){
-                        focus.cc=Color.GREEN;
-                        a=focus.cc;
-                    }
-                    else if(evt.getKeyChar() == '8' && focus!=null){
-                       focus.cc=Color.BLUE;
-                       a=focus.cc;
-                    }
-                    else if(evt.getKeyChar() == '9' && focus!=null){
-                        focus.cc=Color.BLACK;
-                        a=focus.cc;
-                    }
-                    else if(evt.getKeyChar() == '0' && focus!=null){
-                        focus.cc=Color.WHITE;
-                        a=focus.cc;
-                    }
-                   
                     repaint();
                 }
             }

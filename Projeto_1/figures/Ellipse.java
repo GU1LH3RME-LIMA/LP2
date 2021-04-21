@@ -27,6 +27,12 @@ public class Ellipse extends Figure {
         this.ellipse = new Ellipse2D.Double(this.x+1,this.y+1, this.w-1,this.h-1);
     }
     @Override
+    public void resize(int h,int w){
+        this.h+=h;
+        this.w+=w;
+        this.ellipse = new Ellipse2D.Double(this.x+1,this.y+1, this.w-1,this.h-1);
+    }
+    @Override
 	public boolean contains(MouseEvent evt) {
 			if (this.ellipse.contains(evt.getPoint()))
 				return true;

@@ -22,6 +22,14 @@ public class Triang extends Figure{
         this.cf=cf;
     }
 	@Override
+    public void resize(int h,int w){
+        this.h+=h;
+        this.w+=w;
+		int xdir[]= {this.x,((this.w)/2) + (this.x),(this.w) + (this.x)};
+		int ydir[]={this.y, (this.y) - (this.h),this.y};
+	 	this.tri=new Polygon(xdir, ydir, 3);
+    }
+	@Override
 	public void print() {
         System.out.format("Triângulo de tamanho (%d,%d) na posicao (%d,%d).\n",
             this.w, this.h, this.x, this.y);
