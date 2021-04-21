@@ -12,7 +12,6 @@ public class Line extends Figure{
         this.x2=x2;
         this.line= new Line2D.Double(this.x,this.y,this.x2,this.h);
     }
-
     @Override
     public void print () {
         System.out.format("Retangulo de tamanho (%d,%d) na posicao (%d,%d).\n",
@@ -33,7 +32,6 @@ public class Line extends Figure{
 				return true;
 			return false;
 	}
-
     @Override
     public void drag (int x, int y, Point mouse_pos) {
         if (Math.sqrt(Math.pow(this.x - mouse_pos.x, 2) + Math.pow(this.y - mouse_pos.y, 2)) <= 5) {

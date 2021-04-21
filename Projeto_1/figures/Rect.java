@@ -4,7 +4,6 @@ import java.awt.event.*;
 public class Rect extends Figure {
     Color cf;
     Rectangle rect;
-
     public Rect (int x, int y, int w, int h,Color cc,Color cf) {
         super(x, y,h,w, cc);
         this.cf=cf;

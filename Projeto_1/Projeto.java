@@ -141,7 +141,7 @@ class PackFrame extends JFrame {
                             focus.resize(0,1);
                         else if(evt.getKeyCode() ==KeyEvent.VK_LEFT)
                             focus.resize(0,-1);  
-                    }
+                }
                     repaint();
                 }
             }
