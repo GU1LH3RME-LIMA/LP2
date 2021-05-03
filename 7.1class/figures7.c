@@ -20,13 +20,14 @@ typedef struct Figure {
 typedef struct {
     Figure super;
     Color cf;
-    int dx,dy;
+    int dx[3],dy[3];
 } Triang;
 
 void triang_print (Triang* this) {
     Figure* sup = (Figure*) this;
-    printf("Triangulo de tamanho (%d,%d) na posicao (%d,%d).\n",
-           sup->w, sup->h, sup->x, sup->y);
+    printf("Triangulo de tamanho (%d,%d) na posicao (%d,%d) com dx= (%d,%d,%d) e dy=(%d,%d,%d).\n",
+           sup->w, sup->h, sup->x, sup->y,this->dx[0],this->dx[1],this->dx[2],
+           this->dy[0],this->dy[1],this->dy[2]);
 }
 
 Triang* new_triang (int x, int y, int w, int h) {
@@ -37,6 +38,12 @@ Triang* new_triang (int x, int y, int w, int h) {
     sup->y = y;
     sup->w = w;
     sup->h = h;
+    this->dx[0]=x;
+    this->dx[1]=w/2+x;
+    this->dx[2]=w+x;
+    this->dy[0]=y;
+    this->dy[1]=y-h;
+    this->dy[2]=y;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
