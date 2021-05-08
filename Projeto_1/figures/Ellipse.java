@@ -12,11 +12,6 @@ public class Ellipse extends Figure {
         this.ellipse= new Ellipse2D.Double(this.x+1,this.y+1, this.w-1,this.h-1);
     }
     @Override
-    public void print () {
-        System.out.format("Elipse de tamanho (%d,%d) na posicao (%d,%d).\n",
-            this.w, this.h, this.x, this.y);
-    }
-    @Override
     public void changeColor(Color cf) {
         this.cf=cf;
     }

@@ -2,7 +2,7 @@ package figures;
 import java.awt.*;
 import java.awt.event.*;
 public abstract class Figure {
-    protected int x,y,h,w;
+    public int x,y,h,w;
     public Color cc;
     protected Figure(int x, int y,int h,int w, Color cc){
         this.x=x;
@@ -16,6 +16,9 @@ public abstract class Figure {
     public abstract void changeColor(Color cf);
     public abstract void drag (int dx, int dy,Point pos); 
     public abstract void resize(int nh,int nw);  
-    public abstract void print();
+    public  void print(){
+        System.out.format("Figura de tamanho (%d,%d) na posicao (%d,%d).\n",
+            this.w, this.h, this.x, this.y);
+    }
     public abstract void paint (Graphics g);
 }

@@ -42,6 +42,8 @@ class PackFrame extends JFrame {
                     }
                     
                     if (focus != null) {
+                        int dist_x = evt.getX() - focus.x;
+                        int dist_y = evt.getY() - focus.y;
                         if(focus.cc != Color.RED){
                             focus.cc = Color.RED;
                         }
@@ -91,22 +93,27 @@ class PackFrame extends JFrame {
                         figs.add(new Line(mouse.x, mouse.y,
                         60, 60 , 3,  Color.BLACK));
                     }
+                    else if (evt.getKeyCode() == KeyEvent.VK_SHIFT) {
+                        
+                        if (focus == null && figs.size() > 0) {
+                            focus=figs.get(0);
+                            focus.cc=Color.RED;
+                            figs.remove(focus);
+                            figs.add(focus);
+                        }
+                     else {
+                        focus.cc=a;
+                        focus=figs.get((figs.indexOf(focus) + 1) % figs.size());
+                        focus.cc=Color.RED;
+                        figs.remove(focus);
+                        figs.add(focus);
+                    }
+                    
+                }
                     //change the color
                     else if(focus!=null){
                         if(evt.getKeyChar() == '1' ){
-                            focus.changeColor(Color.RED);
-                        }
-                        else if(evt.getKeyChar() == '2' ){
-                            focus.changeColor(Color.GREEN);
-                        }
-                        else if(evt.getKeyChar() == '3' ){
-                            focus.changeColor(Color.BLUE);
-                        }
-                        else if(evt.getKeyChar() == '4'){
-                            focus.changeColor(Color.BLACK);
-                        }
-                        else if(evt.getKeyChar() == '5'){
-                            focus.changeColor(Color.WHITE);
+                            focus.changeColor(JColorChooser.showDialog(null, "Escolha uma cor para o fundo da figura", Color.black));
                         }
                         else if(evt.getKeyCode() == KeyEvent.VK_DELETE){
                             figs.remove(focus);
@@ -114,27 +121,13 @@ class PackFrame extends JFrame {
                          }
                     //change the border
                         else if(evt.getKeyChar() == '6'){
-                            focus.cc=Color.RED;
+                            focus.cc=JColorChooser.showDialog(null, "Escolha uma cor para o fundo da figura", Color.black);
                             a=focus.cc;
                         }
-                        else if(evt.getKeyChar() == '7'){
-                            focus.cc=Color.GREEN;
-                            a=focus.cc;
-                        }
-                        else if(evt.getKeyChar() == '8'){
-                            focus.cc=Color.BLUE;
-                            a=focus.cc;
-                        }
-                        else if(evt.getKeyChar() == '9'){
-                            focus.cc=Color.BLACK;
-                            a=focus.cc;
-                        }
-                        else if(evt.getKeyChar() == '0'){
-                            focus.cc=Color.WHITE;
-                            a=focus.cc;
-                        }
-                        else if(evt.getKeyCode() ==KeyEvent.VK_UP) 
+                        else if(evt.getKeyCode() ==KeyEvent.VK_UP) {
                             focus.resize(1,0);
+                            a=focus.cc;
+                        }
                         else if(evt.getKeyCode() ==KeyEvent.VK_DOWN) 
                             focus.resize(-1,0);
                         else if(evt.getKeyCode() ==KeyEvent.VK_RIGHT) 
@@ -142,7 +135,7 @@ class PackFrame extends JFrame {
                         else if(evt.getKeyCode() ==KeyEvent.VK_LEFT)
                             focus.resize(0,-1);  
                 }
-                    repaint();
+                repaint();
                 }
             }
         );

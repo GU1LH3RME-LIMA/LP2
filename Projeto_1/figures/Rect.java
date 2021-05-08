@@ -10,11 +10,6 @@ public class Rect extends Figure {
         this.rect= new Rectangle(this.x+1,this.y+1, this.w-1,this.h-1);
     }
     @Override
-    public void print () {
-        System.out.format("Retangulo de tamanho (%d,%d) na posicao (%d,%d).\n",
-            this.w, this.h, this.x, this.y);
-    }
-    @Override
     public void changeColor(Color cf) {
         this.cf=cf;
     }

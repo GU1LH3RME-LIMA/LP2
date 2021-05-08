@@ -28,12 +28,7 @@ public class Triang extends Figure{
 		int xdir[]= {this.x,((this.w)/2) + (this.x),(this.w) + (this.x)};
 		int ydir[]={this.y, (this.y) - (this.h),this.y};
 	 	this.tri=new Polygon(xdir, ydir, 3);
-    }
-	@Override
-	public void print() {
-        System.out.format("Triângulo de tamanho (%d,%d) na posicao (%d,%d).\n",
-            this.w, this.h, this.x, this.y);
-        }
+	}
 	@Override
 	public boolean contains(MouseEvent evt) {
 			if (this.tri.contains(evt.getPoint()))

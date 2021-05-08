@@ -13,11 +13,6 @@ public class Line extends Figure{
         this.line= new Line2D.Double(this.x,this.y,this.x2,this.h);
     }
     @Override
-    public void print () {
-        System.out.format("Retangulo de tamanho (%d,%d) na posicao (%d,%d).\n",
-            this.w, this.h, this.x, this.y);
-    }
-    @Override
     public void resize(int h,int w){
         this.h+=h;
         this.w+=w;
