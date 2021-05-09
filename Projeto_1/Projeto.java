@@ -102,7 +102,7 @@ class PackFrame extends JFrame {
                             figs.add(focus);
                         }
                      else {
-                        focus.cc=a;
+                        focus.cc=Color.BLACK;
                         focus=figs.get((figs.indexOf(focus) + 1) % figs.size());
                         focus.cc=Color.RED;
                         figs.remove(focus);
