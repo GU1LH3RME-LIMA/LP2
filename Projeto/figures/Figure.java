@@ -1,7 +1,8 @@
 package figures;
+import ivisible.Ivisible;
 import java.awt.*;
 import java.awt.event.*;
-public abstract class Figure {
+public abstract class Figure implements Ivisible {
     public int x,y,h,w;
     public Color cc;
     protected Figure(int x, int y,int h,int w, Color cc){
@@ -20,5 +21,7 @@ public abstract class Figure {
         System.out.format("Figura de tamanho (%d,%d) na posicao (%d,%d).\n",
             this.w, this.h, this.x, this.y);
     }
-    public abstract void paint (Graphics g);
+    public boolean clicked (int x, int y) {
+        return this.x<=x && x<=this.x+this.w && this.y<=y && y<=this.y+this.h;
+    }
 }

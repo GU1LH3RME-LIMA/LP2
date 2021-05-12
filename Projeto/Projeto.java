@@ -3,6 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.ArrayList;
 import figures.*;
+import ivisible.Ivisible;
 public class Projeto{
     public static void main(String[] args) {
         PackFrame frame=new PackFrame();
@@ -28,6 +29,8 @@ class PackFrame extends JFrame {
             new MouseAdapter() {
                 public void mousePressed (MouseEvent evt) {
                     pos = getMousePosition();
+                    int x = evt.getX();
+                    int y = evt.getY();
                     if (focus != null) {
                         focus.cc = a;
                     }
@@ -35,6 +38,9 @@ class PackFrame extends JFrame {
                     focus = null;
 
                     for (Figure fig: figs) {
+                        if (fig.clicked(x,y)) {
+                            System.out.println("CLICKED");
+                        }
                         if (fig.contains(evt)) {
                             focus = fig;
                             a = focus.cc;
@@ -42,8 +48,6 @@ class PackFrame extends JFrame {
                     }
                     
                     if (focus != null) {
-                        int dist_x = evt.getX() - focus.x;
-                        int dist_y = evt.getY() - focus.y;
                         if(focus.cc != Color.RED){
                             focus.cc = Color.RED;
                         }
