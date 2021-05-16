@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.util.ArrayList;
 import figures.*;
 import ivisible.Ivisible;
+import java.io.*;
+import java.lang.Object;
 public class Projeto{
     public static void main(String[] args) {
         PackFrame frame=new PackFrame();
@@ -16,6 +18,15 @@ class PackFrame extends JFrame {
     Figure focus = null;
     Color a = null;
     PackFrame () {
+        try{
+            FileInputStream f=new FileInputStream("proj.bin");
+            ObjectInputStream o=new ObjectInputStream(f);
+            this.figs = (ArrayList<Figure>) o.readObject();
+            o.close(); 
+        }
+        catch (Exception x) {
+           System.out.println("ERRO");
+        }
         this.addWindowListener (
             new WindowAdapter() {
                 public void windowClosing (WindowEvent e) {
@@ -29,31 +40,20 @@ class PackFrame extends JFrame {
             new MouseAdapter() {
                 public void mousePressed (MouseEvent evt) {
                     pos = getMousePosition();
-                    int x = evt.getX();
-                    int y = evt.getY();
                     if (focus != null) {
                         focus.cc = a;
                     }
-
-                    focus = null;
+                    
+                    focus=null;
 
                     for (Figure fig: figs) {
-                        if (fig.clicked(x,y)) {
-                            System.out.println("CLICKED");
-                        }
-                        if (fig.contains(evt)) {
+                        if (fig.clicked(evt)) {
                             focus = fig;
-                            a = focus.cc;
                         }
+                        
                     }
-                    
-                    if (focus != null) {
-                        if(focus.cc != Color.RED){
-                            focus.cc = Color.RED;
-                        }
-                        else{
-                            focus.cc=Color.GREEN;
-                        }
+                    if (focus!=null){
+                        a=focus.cc;
                         figs.remove(focus);
                         figs.add(focus);
                     }
@@ -84,7 +84,7 @@ class PackFrame extends JFrame {
                     if(mouse==null) return;
                     if (evt.getKeyChar() == 'e') {
                         figs.add(new Ellipse(mouse.x,mouse.y, 30
-                        ,30,Color.BLACK,Color.WHITE));
+                        ,30,Color.WHITE,Color.WHITE));
                     }else if(evt.getKeyChar() == 'r'){
                         figs.add(new Rect(mouse.x,mouse.y, 30
                         ,30,Color.BLACK,Color.WHITE));
@@ -97,18 +97,28 @@ class PackFrame extends JFrame {
                         figs.add(new Line(mouse.x, mouse.y,
                         60, 60 , 3,  Color.BLACK));
                     }
+                    else if(evt.getKeyChar()=='g'){
+                        try {
+                            File file = new File("desenho.svg"); // make file
+                            PrintWriter writer;
+                            writer = new PrintWriter(new FileOutputStream(file)); // write and
+                                                                                    // save file
+                            writer.flush();
+                            writer.close();
+                    
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
                     else if (evt.getKeyCode() == KeyEvent.VK_SHIFT) {
                         
                         if (focus == null && figs.size() > 0) {
                             focus=figs.get(0);
-                            focus.cc=Color.RED;
                             figs.remove(focus);
                             figs.add(focus);
                         }
                      else {
-                        focus.cc=Color.BLACK;
                         focus=figs.get((figs.indexOf(focus) + 1) % figs.size());
-                        focus.cc=Color.RED;
                         figs.remove(focus);
                         figs.add(focus);
                     }
@@ -150,7 +160,7 @@ class PackFrame extends JFrame {
     public void paint (Graphics g) {
         super.paint(g);
         for (Figure fig: this.figs) {
-            fig.paint(g);
+            fig.paint(g,true);
         }
     }
 }

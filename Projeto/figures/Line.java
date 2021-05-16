@@ -4,8 +4,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.geom.*;
 public class Line extends Figure{
-    public int x2;
-    Line2D line;
+    private int x2;
+    private Line2D line;
     //a llargura será a grossura da linha e a altura será o y2
     public Line(int x,int y,int x2,int h,int w,Color cc){
         super(x,y,h,w,cc);
@@ -22,11 +22,12 @@ public class Line extends Figure{
     public void changeColor(Color cc) {
     }
     @Override
-	public boolean contains(MouseEvent evt) {
+	public boolean clicked(MouseEvent evt) {
 			if (this.line.ptSegDist(evt.getPoint()) <= 5)
 				return true;
 			return false;
 	}
+
     @Override
     public void drag (int x, int y, Point mouse_pos) {
         if (Math.sqrt(Math.pow(this.x - mouse_pos.x, 2) + Math.pow(this.y - mouse_pos.y, 2)) <= 5) {
@@ -50,9 +51,13 @@ public class Line extends Figure{
     }
     
     @Override
-    public void paint(Graphics g){
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(this.cc);
+    public void paint(Graphics g,boolean focused) {
+		Graphics2D g2d = (Graphics2D) g;
+		if(focused){
+			g2d.setColor(Color.RED);
+            g2d.draw(this.line);
+        }
+		g2d.setColor(this.cc);
         g2d.setStroke(new BasicStroke(this.w));
         g2d.draw(this.line);
         g2d.setStroke(new BasicStroke(0));

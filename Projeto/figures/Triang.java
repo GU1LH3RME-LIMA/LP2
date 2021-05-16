@@ -2,12 +2,11 @@ package figures;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Ellipse2D.Double;
+
 
 public class Triang extends Figure{
-	Color cf;
-	Polygon tri;
+	private Color cf;
+	private Polygon tri;
 	private int xdir[],ydir[];
  	public Triang(int x,int y,int w,int h,Color cc,Color cf){
  		super(x,y,h,w,cc);
@@ -30,7 +29,7 @@ public class Triang extends Figure{
 	 	this.tri=new Polygon(xdir, ydir, 3);
 	}
 	@Override
-	public boolean contains(MouseEvent evt) {
+	public boolean clicked(MouseEvent evt) {
 			if (this.tri.contains(evt.getPoint()))
 				return true;
 			return false;
@@ -48,10 +47,12 @@ public class Triang extends Figure{
         this.tri = new Polygon(xdir, ydir, 3);
     }
 	@Override
-	public void paint(Graphics g) {
+	public void paint(Graphics g,boolean focused) {
 		Graphics2D g2d = (Graphics2D) g;
-		
-		g2d.setColor(this.cc);
+		if(focused)
+			g2d.setColor(Color.RED);
+		else
+			g2d.setColor(this.cc);
 		g2d.drawPolygon(this.tri);
 		g2d.setColor(this.cf);
 		g2d.fillPolygon(this.tri);
