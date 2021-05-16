@@ -1,3 +1,4 @@
+package button;
 import ivisible.IVisible;
 import figures.Figure;
 import java.awt.*;

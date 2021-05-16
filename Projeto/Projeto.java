@@ -155,6 +155,7 @@ class PackFrame extends JFrame {
         );
         this.setTitle("Mini Editor");
         this.setSize(350, 350);
+        setLocationRelativeTo(null);
     }
 
     public void paint (Graphics g) {
