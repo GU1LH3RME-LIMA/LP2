@@ -1,39 +1,37 @@
 package button;
-import ivisible.IVisible;
+import ivisible.Ivisible;
 import figures.Figure;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Ellipse2D.Double;
 import java.awt.*;
-
-public class Button implements IVisible {
-    static int SPC = 20;
-    static int DIM = 40;
-    static int PAD = 4;
-
+import java.awt.event.*;
+public class Button implements Ivisible {
+    public int x, y;
+    static int DIM = 30;
     public  int    idx;
     private Figure fig;
-
+    public boolean focused;
     public Button (int idx, Figure fig) {
         this.idx = idx;
         this.fig = fig;
-        this.fig.x = PAD+SPC;
-        this.fig.y = PAD+SPC + idx*DIM;
-        this.fig.w = DIM-PAD*2;
-        this.fig.h = DIM-PAD*2;
+        this.focused=false;
+
+        this.x = 20 +(DIM*(idx%2));
+        this.y = 42 + idx * DIM;
     }
 
     public boolean clicked (MouseEvent evt) {
-        if (this.fig.contains(evt.getPoint()))
-				return true;
-			return false;
+        return evt.getX() >= this.x && evt.getX() <= this.x + DIM && evt.getY() >= this.y && evt.getY() <= this.y + DIM;
     }
 
     public void paint (Graphics g, boolean focused) {
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.setColor(focused ? Color.GRAY : Color.LIGHT_GRAY);
-        g2d.fillRect(SPC, SPC+this.idx*DIM, DIM, DIM);
+        g2d.fill(new Ellipse2D.Double(this.x,this.y, DIM, DIM));
 
         g2d.setColor(Color.BLACK);
-        g2d.drawRect(SPC, SPC+this.idx*DIM, DIM, DIM);
+        g2d.draw(new Ellipse2D.Double(this.x, this.y, DIM, DIM));
 
         this.fig.paint(g, false);
     }

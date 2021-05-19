@@ -3,7 +3,7 @@ import ivisible.Ivisible;
 import java.awt.*;
 import java.awt.event.*;
 public abstract class Figure implements Ivisible {
-    public int x,y,h,w;
+    protected int x,y,h,w;
     public boolean focused;
     public Color cc;
     protected Figure(int x, int y,int h,int w, Color cc){

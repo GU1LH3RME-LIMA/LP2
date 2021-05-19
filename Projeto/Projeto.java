@@ -3,6 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.ArrayList;
 import figures.*;
+import button.Button;
 import ivisible.Ivisible;
 import java.io.*;
 import java.lang.Object;
@@ -14,10 +15,18 @@ public class Projeto{
     }
 class PackFrame extends JFrame {
     ArrayList<Figure> figs = new ArrayList<Figure>();
+    ArrayList<Button> buttons= new ArrayList<Button>();
     Point pos;
+    Rect aux = new Rect(4,6,50,13,Color.GREEN,Color.BLACK);
     Figure focus = null;
+    Button selected=null;
     Color a = null;
     PackFrame () {
+        
+        buttons.add(new Button(0,new Rect(27,50,15,15,Color.BLACK,Color.WHITE)));
+        buttons.add(new Button(1,new Ellipse(57,80,15,15,Color.BLACK,Color.BLACK)));
+        buttons.add(new Button(2,new Triang(25,120,20,15,Color.BLACK,Color.WHITE)));
+        buttons.add(new Button(3, new Line(57, 140, 70, 158,2, Color.BLACK)));
         try{
             FileInputStream f=new FileInputStream("proj.bin");
             ObjectInputStream o=new ObjectInputStream(f);
@@ -45,7 +54,24 @@ class PackFrame extends JFrame {
                     }
                     
                     focus=null;
+                    for (Button but: buttons) {
+                        but.focused = false;
 
+                        if (but.clicked(evt)) {
+                            but.focused = true;
+                            selected = but;
+                            if(selected.idx==0)
+								figs.add(new Rect(120,100,30,30,Color.BLACK,Color.WHITE));
+							else if(selected.idx==1)
+								figs.add(new Ellipse(150,100,30,30,Color.BLACK,Color.WHITE));
+                       
+                        }
+                    }
+                     if (selected != null) {
+                        focus = null;
+                        repaint();
+                        return;
+                    }
                     for (Figure fig: figs) {
                         if (fig.clicked(evt)) {
                             focus = fig;
@@ -84,7 +110,7 @@ class PackFrame extends JFrame {
                     if(mouse==null) return;
                     if (evt.getKeyChar() == 'e') {
                         figs.add(new Ellipse(mouse.x,mouse.y, 30
-                        ,30,Color.WHITE,Color.WHITE));
+                        ,30,Color.BLACK,Color.WHITE));
                     }else if(evt.getKeyChar() == 'r'){
                         figs.add(new Rect(mouse.x,mouse.y, 30
                         ,30,Color.BLACK,Color.WHITE));
@@ -154,14 +180,20 @@ class PackFrame extends JFrame {
             }
         );
         this.setTitle("Mini Editor");
-        this.setSize(350, 350);
+        this.setSize(600, 600);
         setLocationRelativeTo(null);
+      
     }
 
     public void paint (Graphics g) {
         super.paint(g);
+        
         for (Figure fig: this.figs) {
-            fig.paint(g,true);
+            fig.paint(g,fig.focused);
         }
+        for (Button but: this.buttons) {
+            but.paint(g,but.focused);
+        }
+        aux.paint(g,false);
     }
 }
