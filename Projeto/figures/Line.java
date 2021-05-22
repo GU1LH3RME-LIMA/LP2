@@ -55,9 +55,10 @@ public class Line extends Figure{
 		Graphics2D g2d = (Graphics2D) g;
 		if(focused){
 			g2d.setColor(Color.RED);
-            g2d.draw(this.line);
         }
-		g2d.setColor(this.cc);
+        else
+		    g2d.setColor(this.cc);
+        g2d.draw(this.line);
         g2d.setStroke(new BasicStroke(this.w));
         g2d.draw(this.line);
         g2d.setStroke(new BasicStroke(0));

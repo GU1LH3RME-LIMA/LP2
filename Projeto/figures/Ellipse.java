@@ -25,7 +25,7 @@ public class Ellipse extends Figure {
     public void resize(int h,int w){
         this.h+=h;
         this.w+=w;
-        this.ellipse = new Ellipse2D.Double(this.x,this.y, this.w,this.h);
+        this.ellipse = new Ellipse2D.Double(this.x-1,this.y-1, this.w+1,this.h+1);
     }
     @Override
 	public boolean clicked(MouseEvent evt) {
@@ -38,7 +38,7 @@ public class Ellipse extends Figure {
 		Graphics2D g2d = (Graphics2D) g;
 		if(focused){
 			g2d.setColor(Color.RED);
-            g2d.draw(new Ellipse2D.Double(this.x-2,this.y-2, this.w+4,this.h+4));
+            g2d.draw(new Ellipse2D.Double(this.x-3,this.y-3, this.w+7,this.h+7));
         }
 		g2d.setColor(this.cc);
         g2d.draw(this.ellipse);

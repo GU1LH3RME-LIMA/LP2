@@ -36,7 +36,7 @@ public class Rect extends Figure {
 		Graphics2D g2d = (Graphics2D) g;
 		if(focused==true){
 			g2d.setColor(Color.RED);
-            g2d.draw(new Rectangle(this.x-2,this.y-2, this.w+4,this.h+4));
+            g2d.draw(new Rectangle(this.x-3,this.y-3, this.w+6,this.h+6));
         }
 		g2d.setColor(this.cc);
         g2d.draw(this.rect);

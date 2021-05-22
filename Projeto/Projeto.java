@@ -49,37 +49,41 @@ class PackFrame extends JFrame {
             new MouseAdapter() {
                 public void mousePressed (MouseEvent evt) {
                     pos = getMousePosition();
-                    if (focus != null) {
-                        focus.cc = a;
-                    }
                     
-                    focus=null;
+                  
                     for (Button but: buttons) {
                         but.focused = false;
-
-                        if (but.clicked(evt)) {
+						if (but.clicked(evt)) {
                             but.focused = true;
                             selected = but;
-                            if(selected.idx==0)
-								figs.add(new Rect(120,100,30,30,Color.BLACK,Color.WHITE));
-							else if(selected.idx==1)
-								figs.add(new Ellipse(150,100,30,30,Color.BLACK,Color.WHITE));
-                       
                         }
+                        
                     }
                      if (selected != null) {
+						focus.focused=false;
+						if(selected.idx==0)
+							figs.add(new Rect(120,100,30,30,Color.BLACK,Color.WHITE));
+						else if(selected.idx==1)
+							figs.add(new Ellipse(150,100,30,30,Color.BLACK,Color.WHITE));
+						else if(selected.idx==2)
+							figs.add(new Triang(120,170,30,30,Color.BLACK,Color.WHITE));
+						else if(selected.idx==3)
+							figs.add(new Line(160,150,180,180,2,Color.BLACK));
                         focus = null;
+                        selected = null;
                         repaint();
-                        return;
+						return;
                     }
                     for (Figure fig: figs) {
+						if(focus!=null)
+							focus.focused=false;
                         if (fig.clicked(evt)) {
                             focus = fig;
+                            focus.focused=true;
                         }
                         
                     }
                     if (focus!=null){
-                        a=focus.cc;
                         figs.remove(focus);
                         figs.add(focus);
                     }
@@ -140,11 +144,14 @@ class PackFrame extends JFrame {
                         
                         if (focus == null && figs.size() > 0) {
                             focus=figs.get(0);
+                            focus.focused=true;
                             figs.remove(focus);
                             figs.add(focus);
                         }
                      else {
+						focus.focused=false;
                         focus=figs.get((figs.indexOf(focus) + 1) % figs.size());
+                        focus.focused=true;
                         figs.remove(focus);
                         figs.add(focus);
                     }
