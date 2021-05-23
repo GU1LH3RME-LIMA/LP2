@@ -26,7 +26,9 @@ class PackFrame extends JFrame {
         buttons.add(new Button(0,new Rect(27,50,15,15,Color.BLACK,Color.WHITE)));
         buttons.add(new Button(1,new Ellipse(57,80,15,15,Color.BLACK,Color.BLACK)));
         buttons.add(new Button(2,new Triang(25,120,20,15,Color.BLACK,Color.WHITE)));
-        buttons.add(new Button(3, new Line(57, 140, 70, 158,2, Color.BLACK)));
+        buttons.add(new Button(3, new Line(57, 147, 73, 147,2, Color.BLACK)));
+        buttons.add(new Button(4, new Line(27, 170, 43, 187,2, Color.BLACK)));
+        buttons.add(new Button(5, new Line(57, 217, 73, 200,2, Color.BLACK)));
         try{
             FileInputStream f=new FileInputStream("proj.bin");
             ObjectInputStream o=new ObjectInputStream(f);
@@ -57,23 +59,24 @@ class PackFrame extends JFrame {
                             but.focused = true;
                             selected = but;
                         }
-                        
                     }
-                     if (selected != null) {
-						focus.focused=false;
+                     if (selected != null){
 						if(selected.idx==0)
-							figs.add(new Rect(120,100,30,30,Color.BLACK,Color.WHITE));
+							figs.add(new Rect(120,100,30,30,Color.BLACK,Color.WHITE));      
 						else if(selected.idx==1)
 							figs.add(new Ellipse(150,100,30,30,Color.BLACK,Color.WHITE));
 						else if(selected.idx==2)
 							figs.add(new Triang(120,170,30,30,Color.BLACK,Color.WHITE));
 						else if(selected.idx==3)
 							figs.add(new Line(160,150,180,180,2,Color.BLACK));
-                        focus = null;
+						if(focus!=null)
+							focus.focused=false;
+						focus=null;
                         selected = null;
                         repaint();
 						return;
                     }
+                    
                     for (Figure fig: figs) {
 						if(focus!=null)
 							focus.focused=false;
