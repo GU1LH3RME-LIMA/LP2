@@ -12,5 +12,5 @@
   * Programação por eventos
   * Desenvolvimento de programas com Interface Gráfica.
 
-##Discente:Guilherme de Lima
-##Docente: Francisco Figueiredo G. Sant'anna
+## Discente:Guilherme de Lima
+## Docente: Francisco Figueiredo G. Sant'anna
