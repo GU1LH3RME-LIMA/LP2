@@ -1,6 +1,6 @@
 # LP2
 
-## Esse é o meu repositorio para a faculdade onde contará com uma *linguegem orientada*  a objetos
+## Este é o meu repositorio para a faculdade onde contará com uma *linguegem orientada*  a objetos
 
 ### Terá neste repositorio:
   * Conceitos básicos de orientação a objetos
@@ -11,3 +11,6 @@
   * Tratamento de exceções
   * Programação por eventos
   * Desenvolvimento de programas com Interface Gráfica.
+
+##Discente:Guilherme de Lima
+##Docente: Francisco Figueiredo G. Sant'anna
