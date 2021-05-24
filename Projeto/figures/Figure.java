@@ -2,7 +2,8 @@ package figures;
 import ivisible.Ivisible;
 import java.awt.*;
 import java.awt.event.*;
-public abstract class Figure implements Ivisible {
+import java.io.*;
+public abstract class Figure implements Ivisible,Serializable {
     protected int x,y,h,w;
     public boolean focused;
     public Color cc;
