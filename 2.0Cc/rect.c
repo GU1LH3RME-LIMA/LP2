@@ -17,10 +17,12 @@ Rect* rect_new () {
 }
 
 void rect_print (Rect* this) {
-    printf("Retangulo de tamanho (%d,%d) na posicao (%d,%d).\n",
-           this->w, this->h, this->x, this->y);
+    printf("Retangulo de tamanho (%d,%d) na posicao (%d,%d) area=%d .\n",
+           this->w, this->h, this->x, this->y,rect_area(this));
 }
-
+int rect_area(Rect* this){
+    return this->w*this->h;
+}
 void rect_drag(Rect* this, int x,int y){
     this->x+=x;
     this->y+=y;
