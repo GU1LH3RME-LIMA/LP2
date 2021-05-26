@@ -17,7 +17,6 @@ class PackFrame extends JFrame {
     ArrayList<Figure> figs = new ArrayList<Figure>();
     ArrayList<Button> buttons= new ArrayList<Button>();
     Point pos;
-    Rect aux = new Rect(4,6,50,13,Color.GREEN,Color.BLACK);
     Figure focus = null;
     Button selected=null;
     Color a = null;
@@ -57,8 +56,7 @@ class PackFrame extends JFrame {
                 }
             }
         );
-       
-        this.addMouseListener (
+       this.addMouseListener (
             //gives a focus on figure
             new MouseAdapter() {
                 public void mousePressed (MouseEvent evt) {
@@ -134,8 +132,7 @@ class PackFrame extends JFrame {
 
             this.addKeyListener (
             new KeyAdapter() {
-
-                public void keyPressed (KeyEvent evt) {
+				public void keyPressed (KeyEvent evt) {
                     Point mouse = getMousePosition();
                     if(mouse==null) return;
                     if (evt.getKeyChar() == 'e') {
@@ -218,7 +215,6 @@ class PackFrame extends JFrame {
     }
 	public void paint (Graphics g) {
         super.paint(g);
-        
         for (Figure fig: this.figs) {
             fig.paint(g,fig.focused);
         }

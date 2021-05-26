@@ -2,7 +2,7 @@ package figures;
 import ivisible.Ivisible;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
+import java.io.Serializable;
 public abstract class Figure implements Ivisible,Serializable {
     protected int x,y,h,w;
     public boolean focused;
@@ -13,7 +13,6 @@ public abstract class Figure implements Ivisible,Serializable {
         this.h=h;
         this.w=w;
         this.cc=cc;
-
     }
     public abstract void changeColor(Color cf);
     public abstract void drag (int dx, int dy,Point pos); 

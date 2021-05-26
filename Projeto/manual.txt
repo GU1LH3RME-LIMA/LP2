@@ -1,0 +1,30 @@
+O minieditor tem como intuito a criação de figuras geometricas por meio de uma interface grafica criada em java.Por isso criei uma pequeno manuel para você se guiar.
+
+Botões:
+    Triangulo,Retangulo,Linha,Ellipse: ao clicar no botão percorra o mouse e ao clicar com o botão direito no mouse ira criar a figura
+    Botão com uma linha em diagonal crescente: caso tenha um objeto em foco, este botão ira possibilitar a aumento da figura
+    Botão com uma linha em diagonal decrecente: caso tenha um objeto em foco, este botão ira possibilitar a diminuição da figura
+
+
+Criacão de figuras por meio do teclado:
+    r: cria um Retangulo  no local indicado pelo mouse
+    e: cria uma Ellipse  no local indicado pelo mouse
+    t: cria um Triangulo no local indicado pelo mouse
+    l: cria uma Linha no local indicado pelo mouse
+
+Obs: Para dar o foco em uma figura basta clicar duas vezes na mesma
+Objetos em foco:
+    Ações pelo teclado:
+        Seta pra cima: aumenta o tamanho da figura
+        Seta pra baixo: diminui o tamanho da figura
+        Seta para direita: aumenta a largura da imagem
+        Seta para esquerda: diminui a largura da imagem
+        1: troca a cor de fundo da imagem
+        6: troca a cor de contorno da imagem
+
+    Mover a figura: basta precionar o botão direito do mouse e mover para onde desejar
+
+g: cria uma arquivo em svg
+SHIFT: troca o foco da imagem
+        
+
