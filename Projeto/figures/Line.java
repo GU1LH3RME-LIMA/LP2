@@ -59,7 +59,11 @@ public class Line extends Figure{
         else
 		    g2d.setColor(this.cc);
         g2d.draw(this.line);
-        g2d.setStroke(new BasicStroke(this.w));
+        if(this.w<0)
+            g2d.setStroke(new BasicStroke(0));
+        else
+            g2d.setStroke(new BasicStroke(this.w));
+        
         g2d.draw(this.line);
         g2d.setStroke(new BasicStroke(0));
         

@@ -75,7 +75,7 @@ class PackFrame extends JFrame {
                         repaint();
                         return;
 						}
-                  
+					selected=null;
                     for (Button but: buttons) {
                         but.focused = false;
 						if (but.clicked(evt)) {
@@ -93,18 +93,22 @@ class PackFrame extends JFrame {
 							focus.focused=false;
 						focus=null;
 					}
-					
                         repaint();
 						return;
 						
                     }
-                    for (Figure fig: figs) {
-						if(focus!=null)
+                    if(focus!=null)
 							focus.focused=false;
+						focus=null;
+                    for (Figure fig: figs) {
+						
                         if (fig.clicked(evt)) {
                             focus = fig;
                             focus.focused=true;
+                            return;
                         }
+                        if(focus!=null)
+							focus.focused=false;
                         
                     }
                     if (focus!=null){
